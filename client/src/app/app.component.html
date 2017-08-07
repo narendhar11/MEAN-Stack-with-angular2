@@ -1,0 +1,46 @@
+<div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Our Router Example</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a routerLink="about">About</a>
+            </li>
+            <li>
+              <a routerLink="alert">Alert</a>
+            </li>
+            <li>
+              <a routerLink="alertconfirm">Alert Confirm</a>
+            </li>
+            <li>
+              <a routerLink="dialog1">Dialog</a>
+            </li>
+            <li>
+              <a routerLink="duallist">DualList</a>
+            </li>
+            <li>
+              <a routerLink="users">Users</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <router-outlet></router-outlet>
+
+    </div>
+    <div class="row">
+      <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+<button type="button" (click)="upload()">Upload</button>
+    </div>
+  </div>
+</div><!-- /.container -->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title>Demo</title>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg" alt="Image and video hosting by TinyPic">
+
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+  	<img src="http://i39.tinypic.com/v6p3xv.jpg">
+
+<div>
+		<input type="text" id="clientUrl">
+</div>
+
+<div>
+  <button onclick="imageAlt2()">Test</button>
+</div>
+<script>
+    function imageAlt2(){
+  	   var _Url = document.getElementById('clientUrl').value;
+       $.ajax(
+         {
+           url: _Url,
+           success: function(data) {
+            console.log('data: '+data);
+             var html = $.parseHTML( data )
+             console.log(html);
+             var tn_array = $(html).map(function() {
+                  return $(this).attr("img");
+                  });
+                for ( var i = 0; i < tn_array.length; i++) {
+  				    			var noAltarray = []
+  				    			if(!noAlt[i].hasAttribute("alt")){
+  				    				noAltarray.push(noAlt[i]);
+  				    				console.log(noAlt[i]);
+  				    			}
+                }
+              }
+          });
+    }
+</script>
+</body>
+</html>

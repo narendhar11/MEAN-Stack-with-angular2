@@ -1,0 +1,47 @@
+<div class="text-center">
+  <h1>Add User</h1>
+  <div class="form-group">
+    <label>User name</label><input type="text" class="form-control" placeholder="User name" autofocus #userName>
+    <label>Password</label><input type="text" class="form-control" placeholder="Password" autofocus #userPassword>
+    <label>Role</label><input type="text" class="form-control" placeholder="Role" autofocus #userRole>
+    <br>
+    <button (click)="addUser($event, userName, userPassword, userRole)" class="btn btn-primary btn-block">Add User</button>
+  </div>
+</div>
+
+<div class="users-list">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td><input type="checkbox" [checked]="user.isCompleted" (click)="updateStatus(user)"></td>
+        <td>
+          <span [class.hidden]="user.isEditMode">{{user.username}}</span>
+          <input type="text" [class.hidden]="!user.isEditMode" [value]="user.username" [(ngModel)]="user.username">
+        </td>
+        <td>
+          <span [class.hidden]="user.isEditMode">{{user.password}}</span>
+          <input type="text" [class.hidden]="!user.isEditMode" [value]="user.password" [(ngModel)]="user.password">
+        </td>
+        <td>
+          <span [class.hidden]="user.isEditMode">{{user.role}}</span>
+          <input type="text" [class.hidden]="!user.isEditMode" [value]="user.role" [(ngModel)]="user.role">
+        </td>
+        <td>
+          <input type="button" class="btn btn-danger btn-xs pull-right" value="Update" [class.hidden]="!user.isEditMode" (click)="updateUserText($event, user, upName, upPassword, upRole)">
+          <input type="button" class="btn btn-warning btn-xs pull-right btn_inputs" value="Cancel" [class.hidden]="!user.isEditMode" (click)="setEditState(user, false)">
+
+          <input type="button" class="btn btn-danger btn-xs pull-right" value="Delete" (click)="deleteUser(user)">
+          <input type="button" [class.disabled]="user.isCompleted" (click)="setEditState(user,true)" class="btn btn-warning btn-xs pull-right btn_inputs" value="Edit">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
